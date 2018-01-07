@@ -2,6 +2,7 @@ package org.uestc.theard;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
+
 import org.opencv.imgcodecs.Imgcodecs;
 import org.uestc.cv.logicAlgorithm;
 

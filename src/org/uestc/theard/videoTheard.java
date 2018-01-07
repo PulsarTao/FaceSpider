@@ -16,7 +16,7 @@ public class videoTheard{
     public void video_start(){
         Iterator<Integer> cap=camera.keySet().iterator();
         while (cap.hasNext()){
-            int index=cap.next();
+            final int index = cap.next();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
