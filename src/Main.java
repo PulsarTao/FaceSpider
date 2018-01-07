@@ -5,13 +5,14 @@ import com.venus.form.*;
  */
 public class Main  {
 	public static void main(String[] args) throws Exception {
-		//¼ÓÔØopencv246ÔËĞĞ¿â
+		//åŠ è½½opencv246è¿è¡Œåº“
 		System.loadLibrary("opencv_java246");
-		//Æô¶¯Ö÷´°¿ÚÏß³Ì
+		//å¯åŠ¨ä¸»çª—å£çº¿ç¨‹
 		formThead formThead=new formThead("MainForm");
 		formThead.run();
 	}
 }
+//Union test code
 /*
 
 import org.opencv.videoio.VideoCapture;
