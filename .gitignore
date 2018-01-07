@@ -2,4 +2,6 @@ target/*
 Save/*
 out/*
 image/*
-config/*
+config/url/*
+bin/*
+idea/*
