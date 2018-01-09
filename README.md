@@ -1,18 +1,17 @@
 ## FaceSpider
 ***
-»ùÓÚopencv246±àÐ´ÄÜ¹»¸ù¾ÝÉèÖÃµÄÏß³ÌÊý¼°Éî¶ÈÕë¶ÔÖ¸¶¨Ä¿±êURLµÄÍ¼Æ¬½øÐÐÅÀÈ¡
-ÅÀÈ¡¾«¶È¼°ÅÀÈ¡ÊýÁ¿ÓÐ´ý¸üÐÂ
-ÔËÐÐÆÚ¼ä³öÏÖ³ÌÐò±ÀÀ£ÏÖÏóÓÐ´ý¸üÐÂ
-²¿·ÖÄ£¿é´ýÍêÉÆ£¬»¶Ó­¸÷Î»¿ªÔ´ÅóÓÑÒ»ÆðÍêÉÆ
+åŸºäºŽopencv246ç¼–å†™èƒ½å¤Ÿæ ¹æ®è®¾ç½®çš„çº¿ç¨‹æ•°åŠæ·±åº¦é’ˆå¯¹æŒ‡å®šç›®æ ‡URLçš„å›¾ç‰‡è¿›è¡Œçˆ¬å–
+çˆ¬å–ç²¾åº¦åŠçˆ¬å–æ•°é‡æœ‰å¾…æ›´æ–°
+è¿è¡ŒæœŸé—´å‡ºçŽ°ç¨‹åºå´©æºƒçŽ°è±¡æœ‰å¾…æ›´æ–°
+éƒ¨åˆ†æ¨¡å—å¾…å®Œå–„ï¼Œæ¬¢è¿Žå„ä½å¼€æºæœ‹å‹ä¸€èµ·å®Œå–„
 ***
-![²âÊÔÊµÍ¼](http://git.oschina.net/uploads/images/2016/0816/012127_f994d3d3_567911.jpeg "²âÊÔÊµÍ¼1")
-![²âÊÔÊµÍ¼](http://git.oschina.net/uploads/images/2016/0816/012136_1dfb4506_567911.jpeg "²âÊÔÊµÍ¼2")
+![æµ‹è¯•å®žå›¾](http://git.oschina.net/uploads/images/2016/0816/012127_f994d3d3_567911.jpeg "æµ‹è¯•å®žå›¾1")
+![æµ‹è¯•å®žå›¾](http://git.oschina.net/uploads/images/2016/0816/012136_1dfb4506_567911.jpeg "æµ‹è¯•å®žå›¾2")
 ***
-### ¿ª·¢Õßqq
-   Ð¡V
+### å¼€å‘è€…qq
+å°V Zhijia Tao  
 2571440661
-    ÌìµÀÇÚ³ê
-   632188145
-### ¿ª·¢Õß½»Á÷ÈººÅ
-´´¿ÍÏîÄ¿ 431646132
-Áã×é°×Ã±½»Á÷Èº68489296
+å¤©é“å‹¤é…¬ Juunyu Tao  
+632188145
+Dking Xiongyu Zhu  
+702073703
