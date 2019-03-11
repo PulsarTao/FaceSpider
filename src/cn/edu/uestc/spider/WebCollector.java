@@ -40,11 +40,11 @@ public class WebCollector extends BreadthCrawler {
      * @param crawlPath    用于维护URL的文件夹
      * @param downloadPath 用于保存图片的文件夹
      */
-    public WebCollector(String crawlPath, String downloadPath,String modelPath,String userAgent,String cookie) {
+    public WebCollector(String crawlPath, String downloadPath, String modelPath, String userAgent, String cookie) {
         super(crawlPath, true);
-        setRequester(new FaceRequester(userAgent,cookie));
+        setRequester(new FaceRequester(userAgent, cookie));
         getConf().setAutoDetectImg(true);
-        this.modelPath=modelPath;
+        this.modelPath = modelPath;
 //        addRegex("-.*#.*");
 //        addRegex("-.*\\?.*");
 
@@ -55,15 +55,18 @@ public class WebCollector extends BreadthCrawler {
         }
 //        computeImageId();
     }
+
     public static class FaceRequester extends OkHttpRequester {
 
         String userAgent = "";
         String cookie = "";
-        public FaceRequester(String userAgent,String cookie){
+
+        public FaceRequester(String userAgent, String cookie) {
             super();
-            this.userAgent=userAgent;
-            this.cookie=cookie;
+            this.userAgent = userAgent;
+            this.cookie = cookie;
         }
+
         @Override
         public Request.Builder createRequestBuilder(CrawlDatum crawlDatum) {
             return super.createRequestBuilder(crawlDatum)
@@ -74,9 +77,10 @@ public class WebCollector extends BreadthCrawler {
 
     public void visit(Page page, CrawlDatums next) {
         String contentType = page.contentType();
-        //根据Content-Type判断是否为图片
-        if (contentType != null && contentType.startsWith("image")) {
-            //从Content-Type中获取图片扩展名
+        if (contentType == null){
+            return;
+        }
+        else if(contentType.startsWith("image")) {
             String extensionName = contentType.split("/")[1];
             try {
                 byte[] image = page.content();
@@ -87,32 +91,28 @@ public class WebCollector extends BreadthCrawler {
                     BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imagebyte));
                     Mat image_mat = LogicAlgorithm.bufferToMartix(bufferedImage);
                     FaceDetcet dec = new FaceDetcet(modelPath);
-                    if (image_mat != null){
-                        image_mat=dec.faceDetcet(image_mat, 1);
-//                        imageViewer.imshow(image_mat, "Collection");
+                    if (image_mat != null) {
+                        boolean haveFace = dec.faceDetcet(image_mat);
+                        if (haveFace) {
+                            FileUtils.write(imageFile, image);
+                            System.out.println("保存图片 " + page.url() + " 到 " + imageFile.getAbsolutePath());
+                            imageViewer.imshow(image_mat, "Collection");
+                        }
                     }
-//                System.out.println(page.getUrl());
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     throw new RuntimeException(ex);
                 }
-                FileUtils.write(imageFile, image);
-                System.out.println("保存图片 " + page.url() + " 到 " + imageFile.getAbsolutePath());
             } catch (Exception e) {
                 ExceptionUtils.fail(e);
             }
         }
-        if (contentType == null) {
-            return;
-        } else if (contentType.contains("html")) {
+        else if (contentType.contains("html")) {
 //            Elements imgs = page.select("img[src]");
 //            for (Element img : imgs) {
 //                String imgSrc = img.attr("abs:src");
 //                next.add(imgSrc);
 //            }
-
-        } else if (contentType.startsWith("image")) {
-
         }
     }
 

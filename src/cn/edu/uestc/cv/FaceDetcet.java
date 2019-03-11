@@ -17,59 +17,39 @@ import java.awt.image.BufferedImage;
  * to
  */
 public class FaceDetcet {
-    private CascadeClassifier face = new CascadeClassifier("data/haarcascades/haarcascade_frontalface_alt.xml");
-    private CascadeClassifier eye = new CascadeClassifier("data/haarcascades/haarcascade_eye.xml");
-    public FaceDetcet(){
+    private CascadeClassifier face = null;
+    private CascadeClassifier eye = null;
 
-    }
-    public FaceDetcet(String faceModelPath){
-        this.face=new CascadeClassifier(faceModelPath);
-    }
-    public boolean detcet(String imagePath) {
-        Mat image = Imgcodecs.imread(imagePath);
-        ImageViewer imageViewer = new ImageViewer();
-        imageViewer.imshow(image, null);
-        return true;
+    public FaceDetcet() {
+        this.face = new CascadeClassifier("data/haarcascades/haarcascade_frontalface_alt.xml");
+        this.eye = new CascadeClassifier("data/haarcascades/haarcascade_eye.xml");
     }
 
-    public boolean detcet(Mat image) {
-        ImageViewer imageViewer = new ImageViewer();
-        imageViewer.imshow(image, null);
-        return true;
-    }
-
-    public boolean detcet(BufferedImage image) {
-        ImageViewer imageViewer = new ImageViewer();
-        LogicAlgorithm decoder = new LogicAlgorithm();
-        imageViewer.imshow(image, null);
-        return true;
+    public FaceDetcet(String faceModelPath) {
+        this.face = new CascadeClassifier(faceModelPath);
     }
 
     /**
-     * this function to paint the  dect arear to the image martix
-     *
      * @param frame
      * @return
      */
-    public Mat faceDetcet(Mat frame, int paint) {
-        if (paint == 1)
-            return painDetcetTarget(frame, this.face);
-        if (paint != 1) {
-            decetSave(frame, null);
-        }
-        return frame;
-    }
-
-    private Mat eyeDetcet(Mat frame) {
-        return painDetcetTarget(frame, this.eye);
+    public boolean faceDetcet(Mat frame) {
+        return detcetTarget(frame, this.face);
     }
 
     /**
-     * decet a face and save it by a new Theard
-     *
      * @param frame
+     * @return
      */
-    public void decetSave(Mat frame, String savePath) {
+    private boolean eyeDetcet(Mat frame) {
+        return detcetTarget(frame, this.face);
+    }
+
+    /**
+     * @param frame
+     * @param savePath
+     */
+    public void decetFullAndSave(Mat frame, String savePath) {
         MatOfRect decet = new MatOfRect();
         Mat face_image = null;
         Mat image = new Mat();
@@ -81,7 +61,6 @@ public class FaceDetcet {
             }
             decet = new MatOfRect();
             this.eye.detectMultiScale(face_image, decet);
-
             if (decet.dataAddr() != 0) {
                 //TODO: set a theard to decet the image characteristic
 
@@ -91,6 +70,18 @@ public class FaceDetcet {
         }
     }
 
+    public Mat painDetcetFace(Mat frame) {
+        return painDetcetTarget(frame, this.face);
+    }
+
+    public Mat painDetcetEye(Mat frame) {
+        return painDetcetTarget(frame, this.eye);
+    }
+
+    public Mat painDetcetEyeAndFace(Mat frame) {
+        return painDetcetTarget(frame, this.face);
+    }
+
     /**
      * pain the detcet area by a squre
      *
@@ -98,7 +89,7 @@ public class FaceDetcet {
      * @param type
      * @return
      */
-    public Mat painDetcetTarget(Mat frame, CascadeClassifier type) {
+    private Mat painDetcetTarget(Mat frame, CascadeClassifier type) {
         Mat image = new Mat();
         Imgproc.cvtColor(frame, image, Imgproc.COLOR_RGB2GRAY);
         Imgproc.equalizeHist(image, image);
@@ -116,13 +107,12 @@ public class FaceDetcet {
         return frame;
     }
 
-    /**
-     * get the characteristic
-     *
-     * @param image
-     * @return
-     */
-    public Mat getImageCharacteristic(Mat image) {
-        return new Mat();
+    private boolean detcetTarget(Mat frame, CascadeClassifier type) {
+        Mat image = new Mat();
+        Imgproc.cvtColor(frame, image, Imgproc.COLOR_RGB2GRAY);
+        Imgproc.equalizeHist(image, image);
+        MatOfRect decet = new MatOfRect();
+        type.detectMultiScale(image, decet);
+        return (!decet.empty());
     }
 }

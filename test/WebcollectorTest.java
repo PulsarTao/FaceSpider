@@ -12,7 +12,7 @@ import java.io.File;
  * WebCollector抓取图片的例子
  * @author hu
  */
-public class DemoImageCrawler extends BreadthCrawler {
+public class WebcollectorTest extends BreadthCrawler {
     File baseDir = new File("images");
     /**
      * 构造一个基于伯克利DB的爬虫
@@ -22,7 +22,7 @@ public class DemoImageCrawler extends BreadthCrawler {
      *
      * @param crawlPath 伯克利DB使用的文件夹
      */
-    public DemoImageCrawler(String crawlPath) {
+    public WebcollectorTest(String crawlPath) {
         super(crawlPath, true);
 
         //只有在autoParse和autoDetectImg都为true的情况下
@@ -68,10 +68,10 @@ public class DemoImageCrawler extends BreadthCrawler {
     }
 
     public static void main(String[] args) throws Exception {
-        DemoImageCrawler demoImageCrawler = new DemoImageCrawler("crawl");
-        demoImageCrawler.setRequester(new OkHttpRequester());
+        WebcollectorTest webcollectorTest = new WebcollectorTest("crawl");
+        webcollectorTest.setRequester(new OkHttpRequester());
         //设置为断点爬取，否则每次开启爬虫都会重新爬取
-        demoImageCrawler.setResumable(false);
-        demoImageCrawler.start(3);
+        webcollectorTest.setResumable(false);
+        webcollectorTest.start(3);
     }
 }

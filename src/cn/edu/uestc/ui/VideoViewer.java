@@ -85,8 +85,7 @@ public class VideoViewer extends JComponent {
         }
         while (true) {
             cap.read(frame);
-//            this.imshow(dec.faceDetcet(frame, 0));
-            this.imshow(frame);
+            this.imshow(dec.painDetcetFace(frame));
             try {
                 Thread.sleep(times);
             } catch (InterruptedException e) {
