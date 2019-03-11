@@ -6,13 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="FaceSpider" />
-        <module name="VeFaceSpider" />
+        <module name="facespider" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="FaceSpider" target="1.5" />
-      <module name="VeFaceSpider" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
