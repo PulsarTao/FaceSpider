@@ -5,7 +5,7 @@ image/
 config/url/*
 bin/
 crawl/
-dowmload/
+download/
 data/
 .idea/
 resources/opencv-341.jar

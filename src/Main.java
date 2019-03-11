@@ -1,5 +1,3 @@
-//import com.venus.form.*;
-
 import cn.edu.uestc.ui.FaceSpider;
 import org.opencv.core.Core;
 import java.awt.*;
@@ -24,5 +22,4 @@ public class Main  {
         });
 	}
 }
-//Union test code
 

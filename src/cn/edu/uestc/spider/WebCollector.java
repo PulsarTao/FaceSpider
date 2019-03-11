@@ -96,7 +96,7 @@ public class WebCollector extends BreadthCrawler {
                         if (haveFace) {
                             FileUtils.write(imageFile, image);
                             System.out.println("保存图片 " + page.url() + " 到 " + imageFile.getAbsolutePath());
-                            imageViewer.imshow(image_mat, "Collection");
+//                            imageViewer.imshow(image_mat, "Collection");
                         }
                     }
                 } catch (Exception ex) {
